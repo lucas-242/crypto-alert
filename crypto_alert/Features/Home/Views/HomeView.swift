@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
         
+    @EnvironmentObject private var viewModel: HomeViewModel
     @State private var showPortfolio: Bool = false
     
     var body: some View {
@@ -19,6 +20,15 @@ struct HomeView: View {
             
             VStack {
                 homeHeader
+                coinsHeader
+                
+                if !showPortfolio {
+                    allCoins
+                }
+                
+                if showPortfolio {
+                    portfolioCoins
+                }
             }
             
             Spacer(minLength: 0)
@@ -26,11 +36,16 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    NavigationView {
-        HomeView()
-            .navigationBarHidden(true)
-        
+
+
+struct HomeView_Previews : PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            HomeView()
+                .navigationBarHidden(true)
+                .environmentObject(dev.homeViewModel)
+            
+        }
     }
 }
 
@@ -60,5 +75,42 @@ extension HomeView {
             }
             .padding(.horizontal)
         
+    }
+    
+    private var coinsHeader : some View {
+        HStack {
+            Text("Coin")
+            Spacer()
+            if showPortfolio {
+                Text("Holdings")
+            }
+            Text("Price")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+        }
+        .font(.caption)
+        .foregroundColor(Color.secondary)
+        .padding(.horizontal)
+    }
+    
+    private var allCoins : some View {
+        List {
+            ForEach(viewModel.allCoins) { coin in
+                CoinRowView(coin: coin, showHoldingColumn: false)
+                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+            }
+        }
+        .listStyle(PlainListStyle())
+        .transition(.move(edge: .leading))
+    }
+    
+    private var portfolioCoins : some View {
+        List {
+            ForEach(viewModel.portfolioCoins) { coin in
+                CoinRowView(coin: coin, showHoldingColumn: true)
+                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+            }
+        }
+        .listStyle(PlainListStyle())
+        .transition(.move(edge: .trailing))
     }
 }

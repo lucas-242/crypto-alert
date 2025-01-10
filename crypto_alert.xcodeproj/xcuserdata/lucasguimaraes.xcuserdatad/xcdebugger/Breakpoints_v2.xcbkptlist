@@ -98,36 +98,6 @@
             endingLineNumber = "24"
             landmarkName = "addSubscribers()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "898BC0FB-C02C-4BA4-A46F-A393C593EBFB - 300de2b438723f74"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "crypto_alert.HomeViewModel.addSubscribers() -&gt; ()"
-                  moduleName = "crypto_alert.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucasguimaraes/Development/projects/crypto_alert/crypto_alert/Features/Home/ViewModels/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24">
-               </Location>
-               <Location
-                  uuid = "898BC0FB-C02C-4BA4-A46F-A393C593EBFB - ed5831800c909889"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;crypto_alert.CoinModel&gt;) -&gt; () in crypto_alert.HomeViewModel.addSubscribers() -&gt; ()"
-                  moduleName = "crypto_alert.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucasguimaraes/Development/projects/crypto_alert/crypto_alert/Features/Home/ViewModels/HomeViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

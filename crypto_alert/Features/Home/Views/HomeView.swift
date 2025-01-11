@@ -20,6 +20,7 @@ struct HomeView: View {
             
             VStack {
                 homeHeader
+                SearchBarView(searchText: $viewModel.searchText)
                 coinsHeader
                 
                 if !showPortfolio {

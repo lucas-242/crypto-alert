@@ -5,6 +5,7 @@
 //  Created by Lucas Matheus Guimarães on 28/12/24.
 //
 
+import Foundation
 import SwiftUI
 
 extension View {

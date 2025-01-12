@@ -89,7 +89,7 @@ extension HomeView {
                 .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
         }
         .font(.caption)
-        .foregroundColor(Color.secondary)
+        .foregroundColor(Color.textSecondary)
         .padding(.horizontal)
     }
     
@@ -98,6 +98,7 @@ extension HomeView {
             ForEach(viewModel.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingColumn: false)
                     .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .listRowBackground(Color.background)
             }
         }
         .listStyle(PlainListStyle())

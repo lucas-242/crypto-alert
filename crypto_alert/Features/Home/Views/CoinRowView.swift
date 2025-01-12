@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CoinRowView: View {
     
+    @Environment(\.colorScheme) var colorScheme:ColorScheme
+    
     let coin: CoinModel
     let showHoldingColumn: Bool
     
@@ -30,7 +32,7 @@ extension CoinRowView {
         HStack(spacing: 0) {
             Text("\(coin.rank)")
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.textSecondary)
                 .frame(minWidth: 30)
             
             CoinImageView(coin: coin)
@@ -39,7 +41,7 @@ extension CoinRowView {
             Text(coin.symbol.uppercased())
                 .font(.headline)
                 .padding(.leading, 6)
-                .foregroundStyle(.accent)
+                .foregroundStyle(colorScheme == .light ? Color.accent : Color.text)
         }
     }
     
@@ -56,8 +58,8 @@ extension CoinRowView {
             Text(coin.currentPrice.asCurrencyWithDecimals())
                 .fontWeight(.bold)
             Text(coin.priceChangePercentage24H?.asPercentString() ?? "")
-                .foregroundStyle((coin.priceChangePercentage24H ?? 0) > 0 ? .green
-                : .red)
+                .foregroundStyle((coin.priceChangePercentage24H ?? 0) > 0 ? Color.greenCustom
+                                 : Color.redCustom)
         }.frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
         
     }

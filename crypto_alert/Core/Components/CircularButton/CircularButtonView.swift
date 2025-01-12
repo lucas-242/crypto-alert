@@ -15,13 +15,13 @@ struct CircularButtonView: View {
         Image(systemName: iconName)
             .font(.headline)
             .frame(width: 50, height: 50)
-            .foregroundColor(Color.accent)
+            .foregroundColor(Color.text)
             .background(
                 Circle()
                     .foregroundColor(Color.background)
             )
             .shadow(
-                color: Color.accent,
+                color: Color.text.opacity(0.15),
                 radius: 5, x: 0, y: 0
             )
             .padding()

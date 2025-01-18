@@ -1,0 +1,19 @@
+{
+	"name": "xcode build server",
+	"version": "0.2",
+	"bspVersion": "2.0",
+	"languages": [
+		"c",
+		"cpp",
+		"objective-c",
+		"objective-cpp",
+		"swift"
+	],
+	"argv": [
+		"/opt/homebrew/bin/xcode-build-server"
+	],
+	"workspace": "/Users/lucasguimaraes/Development/projects/crypto_alert/crypto_alert.xcodeproj/project.xcworkspace",
+	"build_root": "/Users/lucasguimaraes/Library/Developer/Xcode/DerivedData/crypto_alert-fzqukmkpbcsjigegfzocgbimcgql",
+	"scheme": "crypto_alert",
+	"kind": "xcode"
+}

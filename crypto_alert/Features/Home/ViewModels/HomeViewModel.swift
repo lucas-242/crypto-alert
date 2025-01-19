@@ -9,13 +9,7 @@ import Combine
 import Foundation
 
 class HomeViewModel: ObservableObject {
-  @Published var statistics: [StatisticModel] = [
-    StatisticModel(title: "Market Cap", value: "$12.58Bn", percentage: 24.12),
-    StatisticModel(title: "Market Cap", value: "$12.58Bn", percentage: 24.12),
-    StatisticModel(title: "Total Volume", value: "$1.45Tr"),
-    StatisticModel(title: "Portfolio Preview", value: "$54.3k", percentage: -2.13),
-  ]
-
+  @Published var statistics: [StatisticModel] = []
   @Published var allCoins: [CoinModel] = []
   @Published var portfolioCoins: [CoinModel] = []
 
@@ -30,7 +24,36 @@ class HomeViewModel: ObservableObject {
 
   private func addSubscribers() {
     getCoins()
+    getMarketData()
     searchCoins()
+  }
+
+  private func getMarketData() {
+    coinService.$marketData
+      .map(mapMarketData)
+      .sink { [weak self] (response) in
+        self?.statistics = response
+      }
+      .store(in: &cancellables)
+  }
+
+  private func mapMarketData(marketDataModel: MarketDataModel?) -> [StatisticModel] {
+    var stats: [StatisticModel] = []
+
+    guard let data = marketDataModel else {
+      return stats
+    }
+
+    let marketCap = StatisticModel(
+      title: "Market Cap", value: data.marketCap,
+      percentage: data.marketCapChangePercentage24HUsd
+    )
+    let volume = StatisticModel(title: "24h Volume", value: data.volume)
+    let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominance)
+    let portfolio = StatisticModel(title: "Portfolio Value", value: "$0.00", percentage: 0)
+
+    stats.append(contentsOf: [marketCap, volume, btcDominance, portfolio])
+    return stats
   }
 
   private func getCoins() {

@@ -9,16 +9,16 @@ import SwiftUI
 
 @main
 struct crypto_alertApp: App {
-    
-    @StateObject private var viewModel = HomeViewModel()
-    
-    var body: some Scene {
-        WindowGroup {
-            NavigationView {
-                HomeView()
-                    .navigationBarHidden(true)
-            }
-            .environmentObject(viewModel)
-        }
+
+  @StateObject private var viewModel = HomeViewModel()
+
+  var body: some Scene {
+    WindowGroup {
+      NavigationView {
+        HomeView()
+          .navigationBarHidden(true)
+      }
+      .environmentObject(viewModel)
     }
+  }
 }

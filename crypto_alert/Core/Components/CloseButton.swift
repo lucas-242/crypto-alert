@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct CloseButton: View {
-    
-    @Environment(\.presentationMode) var presentationMode
 
-    var body: some View {
-        Button(
-          action: {
-            presentationMode.wrappedValue.dismiss()
-          },
-          label: {
-            Image(systemName: "xmark")
-                  .font(.headline)
-                  .foregroundStyle(Color.text)
-          }
-        )
-    }
+  @Environment(\.presentationMode) var presentationMode
+
+  var body: some View {
+    Button(
+      action: {
+        self.presentationMode.wrappedValue.dismiss()
+      },
+      label: {
+        Image(systemName: "xmark")
+          .font(.headline)
+          .foregroundStyle(Color.text)
+      }
+    )
+  }
 }
 
 #Preview {
-    CloseButton()
+  CloseButton()
 }

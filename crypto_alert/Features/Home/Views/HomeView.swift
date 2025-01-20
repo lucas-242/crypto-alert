@@ -11,12 +11,19 @@ struct HomeView: View {
 
   @EnvironmentObject private var viewModel: HomeViewModel
   @State private var showPortfolio: Bool = false
+  @State private var showSheet: Bool = false
 
   var body: some View {
     ZStack(alignment: .top) {
 
       Color.background
         .ignoresSafeArea()
+        .sheet(
+          isPresented: $showSheet,
+          content: {
+            PortfolioView()
+              .environmentObject(viewModel)
+          })
 
       VStack {
         homeHeader
@@ -58,6 +65,11 @@ extension HomeView {
         .background(
           CircularButtonAnimationView(animate: $showPortfolio)
         )
+        .onTapGesture {
+          if showPortfolio {
+            showSheet.toggle()
+          }
+        }
       Spacer()
       Text(showPortfolio ? "Portfolio" : "Live Prices")
         .font(.headline)
